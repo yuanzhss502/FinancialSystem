@@ -1,0 +1,1192 @@
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:13] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+2020-03-18 16:44:17,096 INFO args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'}
+2020-03-18 16:44:17,098 INFO args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'}
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 30, in get_data
+    res = self.db_mongodb.buniss.find_one(params)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/collection.py", line 1273, in find_one
+    for result in cursor.limit(-1):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1156, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1050, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1810, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1763, in __start_session
+    server_session = self._get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1796, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 485, in get_server_session
+    None)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 209, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 192.168.3.100:27017: [Errno 61] Connection refused
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 30, in get_data
+    res = self.db_mongodb.buniss.find_one(params)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/collection.py", line 1273, in find_one
+    for result in cursor.limit(-1):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1156, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1050, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1810, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1763, in __start_session
+    server_session = self._get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1796, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 485, in get_server_session
+    None)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 209, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 192.168.3.100:27017: [Errno 61] Connection refused
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:47] "[35m[1mGET /data/get_data?sdata=2020-03-18&edata=2020-03-19&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:44:47] "[35m[1mGET /data/get_data?sdata=2020-03-18&edata=2020-03-19&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:04] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:04] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:04] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:04] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:04] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:04] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:05] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:05] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+2020-03-18 16:45:08,329 INFO args --{'sdata': '2020-03-18', 'edata': '2020-03-11', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-18', 'edata': '2020-03-11', 'dims': 'activecount'}
+2020-03-18 16:45:08,331 INFO args --{'sdata': '2020-03-18', 'edata': '2020-03-11', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-18', 'edata': '2020-03-11', 'dims': 'activecount'}
+2020-03-18 16:45:15,197 INFO args --{'sdata': '2020-03-06', 'edata': '2020-03-11', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-06', 'edata': '2020-03-11', 'dims': 'activecount'}
+2020-03-18 16:45:15,199 INFO args --{'sdata': '2020-03-06', 'edata': '2020-03-11', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-06', 'edata': '2020-03-11', 'dims': 'activecount'}
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 30, in get_data
+    res = self.db_mongodb.buniss.find_one(params)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/collection.py", line 1273, in find_one
+    for result in cursor.limit(-1):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1156, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1050, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1810, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1763, in __start_session
+    server_session = self._get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1796, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 485, in get_server_session
+    None)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 209, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 192.168.3.100:27017: [Errno 61] Connection refused
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 30, in get_data
+    res = self.db_mongodb.buniss.find_one(params)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/collection.py", line 1273, in find_one
+    for result in cursor.limit(-1):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1156, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1050, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1810, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1763, in __start_session
+    server_session = self._get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1796, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 485, in get_server_session
+    None)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 209, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 192.168.3.100:27017: [Errno 61] Connection refused
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:38] "[35m[1mGET /data/get_data?sdata=2020-03-18&edata=2020-03-11&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:38] "[35m[1mGET /data/get_data?sdata=2020-03-18&edata=2020-03-11&dims=activecount HTTP/1.1[0m" 500 -
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 30, in get_data
+    res = self.db_mongodb.buniss.find_one(params)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/collection.py", line 1273, in find_one
+    for result in cursor.limit(-1):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1156, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1050, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1810, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1763, in __start_session
+    server_session = self._get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1796, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 485, in get_server_session
+    None)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 209, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 192.168.3.100:27017: [Errno 61] Connection refused
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 30, in get_data
+    res = self.db_mongodb.buniss.find_one(params)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/collection.py", line 1273, in find_one
+    for result in cursor.limit(-1):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1156, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/cursor.py", line 1050, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1810, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1763, in __start_session
+    server_session = self._get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1796, in _get_server_session
+    return self._topology.get_server_session()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 485, in get_server_session
+    None)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/pymongo/topology.py", line 209, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 192.168.3.100:27017: [Errno 61] Connection refused
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:45] "[35m[1mGET /data/get_data?sdata=2020-03-06&edata=2020-03-11&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:45:45] "[35m[1mGET /data/get_data?sdata=2020-03-06&edata=2020-03-11&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+2020-03-18 16:56:39,037 INFO args --{'sdata': '2020-03-06', 'edata': '2020-03-10', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-06', 'edata': '2020-03-10', 'dims': 'activecount'}
+2020-03-18 16:56:39,038 INFO args --{'sdata': '2020-03-06', 'edata': '2020-03-10', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-06', 'edata': '2020-03-10', 'dims': 'activecount'}
+2020-03-18 16:56:39,046 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:39,047 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:39,054 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-06' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-06' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:39,054 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-06' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-06' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:39,089 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:40] "[37mGET /data/get_data?sdata=2020-03-06&edata=2020-03-10&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:39,089 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:40] "[37mGET /data/get_data?sdata=2020-03-06&edata=2020-03-10&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:45,333 INFO args --{'sdata': '2020-03-01', 'edata': '2020-03-10', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-01', 'edata': '2020-03-10', 'dims': 'activecount'}
+2020-03-18 16:56:45,335 INFO args --{'sdata': '2020-03-01', 'edata': '2020-03-10', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-01', 'edata': '2020-03-10', 'dims': 'activecount'}
+2020-03-18 16:56:45,337 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:45,338 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:45,343 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:45,344 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-10' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:45,353 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:46] "[37mGET /data/get_data?sdata=2020-03-01&edata=2020-03-10&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:45,355 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:47] "[37mGET /data/get_data?sdata=2020-03-01&edata=2020-03-10&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:48,425 INFO args --{'sdata': '2020-03-01', 'edata': '2020-03-07', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-01', 'edata': '2020-03-07', 'dims': 'activecount'}
+2020-03-18 16:56:48,427 INFO args --{'sdata': '2020-03-01', 'edata': '2020-03-07', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-01', 'edata': '2020-03-07', 'dims': 'activecount'}
+2020-03-18 16:56:48,429 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:48,432 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:48,438 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:48,440 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-01' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:48,444 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:49] "[37mGET /data/get_data?sdata=2020-03-01&edata=2020-03-07&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:48,444 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:50] "[37mGET /data/get_data?sdata=2020-03-01&edata=2020-03-07&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:57,464 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-07', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-07', 'dims': 'activecount'}
+2020-03-18 16:56:57,466 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-07', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-07', 'dims': 'activecount'}
+2020-03-18 16:56:57,469 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:57,473 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:56:57,475 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:57,479 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-07' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:56:57,478 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:58] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-07&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:56:57,482 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:56:59] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-07&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:57:04,085 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-20', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-20', 'dims': 'activecount'}
+2020-03-18 16:57:04,087 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-20', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-20', 'dims': 'activecount'}
+2020-03-18 16:57:04,091 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:57:04,091 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:57:04,098 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-20' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-20' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:57:04,099 INFO sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-20' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamenamem, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-20' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:57:04,100 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:06] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-20&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:57:04,102 ERROR SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1054, "Unknown column 'fgamenamem' in 'field list'")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:08] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-20&dims=activecount HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:50] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+2020-03-18 16:57:54,099 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 16:57:54,100 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 16:57:54,106 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:57:54,107 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:57:54,113 INFO sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:57:54,114 INFO sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:57:54,118 ERROR SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:55] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:57:54,119 ERROR SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:57:56] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:57:59,285 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-21', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-21', 'dims': 'activecount'}
+2020-03-18 16:57:59,287 INFO args --{'sdata': '2020-03-12', 'edata': '2020-03-21', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-12', 'edata': '2020-03-21', 'dims': 'activecount'}
+2020-03-18 16:57:59,292 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:57:59,292 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:57:59,297 INFO sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-21' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-21' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:57:59,298 INFO sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-21' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM (fcount) as activecount from gameactive where fdate >= '2020-03-12' and fdate <= '2020-03-21' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:57:59,300 ERROR SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:01] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-21&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:57:59,306 ERROR SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual") [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:53]
+ERROR:root:SQL执行异常--(1630, "FUNCTION analysis.SUM does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual")
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:03] "[37mGET /data/get_data?sdata=2020-03-12&edata=2020-03-21&dims=activecount HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:27] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+2020-03-18 16:58:31,123 INFO args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'}
+2020-03-18 16:58:31,125 INFO args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-18', 'edata': '2020-03-19', 'dims': 'activecount'}
+2020-03-18 16:58:31,129 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:58:31,130 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:58:31,133 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-18' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-18' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:58:31,135 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-18' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-18' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:58:31,144 INFO sql -- () [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- ()
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:31] "[37mGET /data/get_data?sdata=2020-03-18&edata=2020-03-19&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:58:31,146 INFO sql -- () [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- ()
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:58:31] "[37mGET /data/get_data?sdata=2020-03-18&edata=2020-03-19&dims=activecount HTTP/1.1[0m" 200 -
+2020-03-18 16:59:25,561 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-19', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-19', 'dims': 'activecount'}
+2020-03-18 16:59:25,563 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-19', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-19', 'dims': 'activecount'}
+2020-03-18 16:59:25,567 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:59:25,568 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:59:25,572 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:59:25,572 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-19' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:59:25,579 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+2020-03-18 16:59:25,579 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['fcount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:59:25] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-19&dims=activecount HTTP/1.1[0m" 500 -
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['fcount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:59:25] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-19&dims=activecount HTTP/1.1[0m" 500 -
+2020-03-18 16:59:30,115 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-14', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-14', 'dims': 'activecount'}
+2020-03-18 16:59:30,117 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-14', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-14', 'dims': 'activecount'}
+2020-03-18 16:59:30,121 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:59:30,123 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 16:59:30,126 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-14' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-14' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:59:30,127 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-14' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-14' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 16:59:30,130 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['fcount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:59:30] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-14&dims=activecount HTTP/1.1[0m" 500 -
+2020-03-18 16:59:30,132 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['fcount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 16:59:30] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-14&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+2020-03-18 17:01:38,130 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'}
+2020-03-18 17:01:38,132 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'}
+2020-03-18 17:01:38,138 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:01:38,141 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:01:38,143 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:01:38,144 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:01:38,147 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+2020-03-18 17:01:38,147 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['fcount'] = int(fcount)
+TypeError: list indices must be integers or slices, not str
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:01:38] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-15&dims=activecount HTTP/1.1[0m" 500 -
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['fcount'] = int(fcount)
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:01:38] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-15&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+2020-03-18 17:04:27,532 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'}
+2020-03-18 17:04:27,534 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-15', 'dims': 'activecount'}
+2020-03-18 17:04:27,542 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:04:27,543 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:04:27,550 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:04:27,550 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-15' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:04:27,554 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+2020-03-18 17:04:27,557 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:27] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-15&dims=activecount HTTP/1.1[0m" 500 -
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:27] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-15&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:38] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+2020-03-18 17:04:43,011 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:04:43,013 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:04:43,017 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:04:43,017 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:04:43,021 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:04:43,021 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:04:43,024 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:43] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 500 -
+2020-03-18 17:04:43,025 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 36, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:04:43] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:30] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+2020-03-18 17:09:33,768 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:09:33,769 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:09:33,776 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:09:33,777 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:09:33,784 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:09:33,784 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:09:33,791 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+2020-03-18 17:09:33,793 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 37, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:33] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 500 -
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 37, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:09:33] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:45] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+2020-03-18 17:10:49,022 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:10:49,024 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:10:49,030 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:10:49,032 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:10:49,035 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:10:49,036 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:10:49,038 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+2020-03-18 17:10:49,039 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 37, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:49] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 500 -
+ERROR:bootstrap:Exception on /data/get_data [GET]
+Traceback (most recent call last):
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/yuanzhss/PycharmProjects/System/venv/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/yuanzhss/PycharmProjects/System/commom/auth.py", line 18, in wrap
+    return func(*args, **kwargs)
+  File "/Users/yuanzhss/PycharmProjects/System/viewhandler/data_blueprint.py", line 16, in get_data
+    return jsonify(control.user_get_data())
+  File "/Users/yuanzhss/PycharmProjects/System/control/datacontrol.py", line 110, in user_get_data
+    data = self.datamodel.get_data(dims=dims, args=params)
+  File "/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py", line 37, in get_data
+    data['activecount'] = fcount
+TypeError: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:10:49] "[35m[1mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /page/main/ HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/plugin/jquery-2.1.4/jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/js/main.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/plugin/jedate-6.0.2/skin/jedate.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/plugin/echarts.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/plugin/jedate-6.0.2/jquery.jedate.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:34] "[37mGET /static/js/commom.js HTTP/1.1[0m" 200 -
+2020-03-18 17:11:37,667 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:11:37,669 INFO args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'} [/Users/yuanzhss/PycharmProjects/System/control/basecontrol.py:12]
+INFO:root:args --{'sdata': '2020-03-13', 'edata': '2020-03-18', 'dims': 'activecount'}
+2020-03-18 17:11:37,674 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:11:37,676 INFO 从mysql中获取数据 [/Users/yuanzhss/PycharmProjects/System/dbmodel/datamodel.py:32]
+INFO:root:从mysql中获取数据
+2020-03-18 17:11:37,678 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:11:37,679 INFO sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+               [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:42]
+INFO:root:sql - 
+                select fdate, fgamename, SUM(fcount) as activecount from gameactive where fdate >= '2020-03-13' and fdate <= '2020-03-18' GROUP by fdate, fgamename, fcount limit 10
+    
+    
+              
+2020-03-18 17:11:37,682 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+2020-03-18 17:11:37,683 INFO sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}] [/Users/yuanzhss/PycharmProjects/System/dbmodel/connection/db_mysql.py:47]
+INFO:root:sql -- [{'fdate': '2020-03-13', 'fgamename': '斗地主', 'activecount': Decimal('269')}, {'fdate': '2020-03-13', 'fgamename': '梦幻', 'activecount': Decimal('230')}, {'fdate': '2020-03-13', 'fgamename': '石器时代', 'activecount': Decimal('273')}, {'fdate': '2020-03-13', 'fgamename': '魔力', 'activecount': Decimal('228')}]
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:37] "[37mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Mar/2020 17:11:37] "[37mGET /data/get_data?sdata=2020-03-13&edata=2020-03-18&dims=activecount HTTP/1.1[0m" 200 -

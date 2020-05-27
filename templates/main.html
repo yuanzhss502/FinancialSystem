@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+
+{% block title %}主页面{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- 日期 -->
+        <input id="sdata" class="data">
+        <input id="edata" class="data">
+
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="chart1" class="chart"></div>
+
+        <div id="chart2" class="chart"></div>
+    </div>
+
+{% endblock %}
+
+
+{% block usejs %}
+
+<script src="/static/js/commom.js"></script>
+<script src="/static/js/main.js"></script>
+
+{% endblock %}

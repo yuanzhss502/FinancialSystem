@@ -1,0 +1,52 @@
+.container{
+
+    width: 1170px;
+    margin: 80px auto auto auto;
+
+}
+
+
+.header{
+
+    height: 80px;
+
+    background-color: #373d47;
+
+}
+
+.item{
+
+    margin: 20px auto auto 500px;
+
+}
+
+.left{
+
+    margin: 20px auto auto 100px;
+
+}
+
+.lab {
+
+    margin: 20px auto auto 100px;
+
+    color: white;
+
+    cursor: pointer;
+
+}
+
+.data {
+
+    margin: 60px auto auto 200px;
+
+}
+
+.chart{
+
+    margin: 50px auto auto auto;
+    width: 800px;
+    height: 500px;
+
+
+}
